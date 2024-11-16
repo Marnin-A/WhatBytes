@@ -60,7 +60,9 @@ export default function Component() {
 											</p>
 										</div>
 									</div>
-									<UpdateScore setStatistics={setStatistics} />
+									<React.Suspense fallback={"Loading..."}>
+										<UpdateScore setStatistics={setStatistics} />
+									</React.Suspense>
 								</div>
 							</CardContent>
 						</Card>
