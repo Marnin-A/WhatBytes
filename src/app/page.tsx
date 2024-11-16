@@ -1,101 +1,119 @@
+"use client";
+
+import * as React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { parseAsString, useQueryStates } from "nuqs";
+import ComparisonGraph from "@/components/ComparisonGraph";
+import QuickStatistics from "@/components/QuickStatistics";
+import UpdateScore from "@/components/UpdateScore";
+import SyllabusAnalysis from "@/components/SyllabusAnalysis";
+import QuestionAnalysis from "@/components/QuestionAnalysis";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+export default function Component() {
+	const pathName = usePathname();
+	const [statistics, setStatistics] = useQueryStates(
+		{
+			rank: parseAsString.withDefault("4"),
+			percentile: parseAsString.withDefault("90"),
+			correctAnswers: parseAsString.withDefault("12"),
+		},
+		{
+			history: "push",
+		}
+	);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<div className="flex-1 overflow-auto">
+			<div className="container mx-auto p-4 space-y-6">
+				{/* Header */}
+				<h1 className="p-4 pb-0 text-xl font-semibold">
+					{pathName === "/internship"
+						? "Internship"
+						: pathName === "/dashboard"
+						? "Dashboard"
+						: "Skill Test"}
+				</h1>
+				<div className="grid md:grid-cols-[1fr,300px] gap-6">
+					<div className="space-y-6">
+						<Card>
+							<CardContent className="p-6">
+								<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+									<div className="flex items-center gap-4">
+										<div className="relative">
+											<Image
+												src="/img/html5.png"
+												alt="HTML5 Logo"
+												width={80}
+												height={80}
+												className="object-contain"
+											/>
+										</div>
+										<div>
+											<h1 className="text-xl font-bold">
+												Hyper Text Markup Language
+											</h1>
+											<p className="text-sm text-muted-foreground">
+												Questions: 08 | Duration: 15 mins | Submitted on 5 June
+												2021
+											</p>
+										</div>
+									</div>
+									<UpdateScore setStatistics={setStatistics} />
+								</div>
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader>
+								<CardTitle>Quick Statistics</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<QuickStatistics
+									rank={statistics.rank}
+									percentile={statistics.percentile}
+									correctAnswers={statistics.correctAnswers}
+								/>
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader>
+								<CardTitle>Comparison Graph</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<ComparisonGraph percentile={statistics.percentile} />
+							</CardContent>
+						</Card>
+					</div>
+
+					<div className="space-y-6">
+						<Card>
+							<CardHeader>
+								<CardTitle>Syllabus Wise Analysis</CardTitle>
+							</CardHeader>
+							<CardContent className="space-y-4">
+								<SyllabusAnalysis />
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader>
+								<div className="flex justify-between items-center">
+									<CardTitle>Question Analysis</CardTitle>
+									<span className="text-blue-600 font-bold">
+										{statistics.correctAnswers}/15
+									</span>
+								</div>
+							</CardHeader>
+							<CardContent>
+								<QuestionAnalysis correctAnswers={statistics.correctAnswers} />
+							</CardContent>
+						</Card>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
