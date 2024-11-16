@@ -5,6 +5,8 @@ import NavBar from "@/components/NavBar";
 import SideBarComp from "@/components/SideBarComp";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
+export const dynamic = "force-dynamic";
+
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
 	variable: "--font-geist-sans",
