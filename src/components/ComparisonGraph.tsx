@@ -29,7 +29,7 @@ const rawData = [
 	{ percentile: 100, value: 1 },
 ];
 
-const ComparisonGraph = (percentile: { percentile: number }) => {
+const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 	// Process data to handle multiple values at the same percentile
 	const processedData = useMemo(() => {
 		const grouped = groupBy(rawData, "percentile");
