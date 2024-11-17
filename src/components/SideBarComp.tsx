@@ -53,7 +53,9 @@ export default function SideBarComp({
 					</SidebarContent>
 				</Sidebar>
 			</div>
-			<div className="w-full h-[90dvh] overflow-y-scroll">{children}</div>
+			<div className="w-full h-[90dvh] overflow-y-scroll relative">
+				{children}
+			</div>
 		</SidebarProvider>
 	);
 }

@@ -26,9 +26,9 @@ export default function Component() {
 
 	return (
 		<div className="flex-1 overflow-auto">
-			<div className="p-4 space-y-6">
+			<div className="p-4 pt-0 space-y-6">
 				{/* Header */}
-				<h1 className="p-4 pb-0 text-xl font-semibold">
+				<h1 className="p-4 py-0 text-xl font-semibold">
 					{pathName === "/internship"
 						? "Internship"
 						: pathName === "/dashboard"
