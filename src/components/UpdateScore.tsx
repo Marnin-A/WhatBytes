@@ -64,7 +64,9 @@ export default function UpdateScore({ setStatistics }: UpdateScore) {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button className="bg-[#1a237e] hover:bg-[#1a237e]/90">Update</Button>
+				<Button className="bg-[#1a237e] hover:bg-[#1a237e]/90 max-sm:w-full">
+					Update
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="sm:max-w-[625px]">
 				<DialogHeader>
