@@ -37,7 +37,7 @@ export default function RootLayout({
 				<NuqsAdapter>
 					<NavBar />
 					<SideBarComp>
-						<SidebarTrigger className="mt-8" />
+						<SidebarTrigger className="mt-[26px]" />
 						{children}
 					</SideBarComp>
 				</NuqsAdapter>

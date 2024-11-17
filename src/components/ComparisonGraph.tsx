@@ -14,8 +14,8 @@ const rawData = [
 	{ percentile: 0, value: 1 },
 	{ percentile: 10, value: 2 },
 	{ percentile: 20, value: 3 },
+	{ percentile: 30, value: 5 },
 	{ percentile: 30, value: 4 },
-	{ percentile: 30, value: 4.5 },
 	{ percentile: 30, value: 6.5 },
 	{ percentile: 35, value: 10 },
 	{ percentile: 40, value: 11 },
@@ -84,16 +84,15 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 							ticks={[0, 25, 50, 75, 100]}
 							tickLine
 							tickMargin={10}
-							stroke="#888"
+							stroke="#000"
 						/>
 						<Tooltip
 							// eslint-disable-next-line @typescript-eslint/no-unused-vars
 							formatter={(value, _, props) => [value, "Number of Students"]}
 						/>
 						<ReferenceLine
-							x={30}
+							x={percentile}
 							stroke="#666"
-							strokeDasharray="3 3"
 							label={{
 								position: "center",
 								value: "your percentile",
@@ -104,7 +103,7 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 						<Line
 							type="monotone"
 							dataKey="value"
-							stroke="#7572b4"
+							stroke="#8B87C2"
 							strokeWidth={2}
 							dot={true}
 							activeDot={{ r: 6, fill: "#7572b4", stroke: "#7572b4" }}
