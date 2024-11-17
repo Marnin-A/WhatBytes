@@ -24,32 +24,35 @@ export default function SideBarComp({
 		{ icon: Award, label: "Skill Test", href: "/" },
 		{ icon: File, label: "Internship", href: "/internship" },
 	];
+
 	return (
-		<SidebarProvider className="relative">
-			<Sidebar className="absolute top-0">
-				<SidebarContent>
-					<SidebarGroup>
-						<SidebarGroupContent>
-							<SidebarMenu className="pt-10">
-								{menuItems.map((item, index) => (
-									<SidebarMenuItem key={index}>
-										<SidebarMenuButton
-											className="text-lg py-8"
-											asChild
-											isActive={item.href === pathName}
-										>
-											<a href={item.href}>
-												<item.icon className="h-4 w-4 mr-2" />
-												{item.label}
-											</a>
-										</SidebarMenuButton>
-									</SidebarMenuItem>
-								))}
-							</SidebarMenu>
-						</SidebarGroupContent>
-					</SidebarGroup>
-				</SidebarContent>
-			</Sidebar>
+		<SidebarProvider>
+			<div className="relative">
+				<Sidebar className="absolute top-0">
+					<SidebarContent>
+						<SidebarGroup>
+							<SidebarGroupContent>
+								<SidebarMenu className="pt-10">
+									{menuItems.map((item, index) => (
+										<SidebarMenuItem key={index}>
+											<SidebarMenuButton
+												className="text-lg py-8"
+												asChild
+												isActive={item.href === pathName}
+											>
+												<a href={item.href}>
+													<item.icon className="h-4 w-4 mr-2" />
+													{item.label}
+												</a>
+											</SidebarMenuButton>
+										</SidebarMenuItem>
+									))}
+								</SidebarMenu>
+							</SidebarGroupContent>
+						</SidebarGroup>
+					</SidebarContent>
+				</Sidebar>
+			</div>
 			{children}
 		</SidebarProvider>
 	);

@@ -85,7 +85,7 @@ export default function Component() {
 								<CardTitle>Comparison Graph</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<ComparisonGraph percentile={statistics.percentile} />
+								<ComparisonGraph percentile={Number(statistics.percentile)} />
 							</CardContent>
 						</Card>
 					</div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import SideBarComp from "@/components/SideBarComp";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export const dynamic = "force-dynamic";
 
@@ -31,11 +32,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
 			>
 				<NuqsAdapter>
 					<NavBar />
-					<SideBarComp>{children}</SideBarComp>
+					<SideBarComp>
+						<SidebarTrigger className="mt-8" />
+						{children}
+					</SideBarComp>
 				</NuqsAdapter>
 			</body>
 		</html>
