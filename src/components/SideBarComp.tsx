@@ -36,7 +36,7 @@ export default function SideBarComp({
 									{menuItems.map((item, index) => (
 										<SidebarMenuItem key={index}>
 											<SidebarMenuButton
-												className="text-lg py-8"
+												className="text-lg font-semibold text-gray-600 py-8"
 												asChild
 												isActive={item.href === pathName}
 											>
