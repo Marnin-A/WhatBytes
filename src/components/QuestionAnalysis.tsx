@@ -16,8 +16,10 @@ export default function QuestionAnalysis({
 	return (
 		<div>
 			<div className="text-sm text-muted-foreground mb-6">
-				You scored {correctAnswers} question correct out of 15. However it still
-				needs some improvements
+				<span className="font-semibold">
+					You scored {correctAnswers} question correct out of 15.
+				</span>{" "}
+				However it still needs some improvements
 			</div>
 			<div className="w-48 h-48 mx-auto relative">
 				<ResponsiveContainer width="100%" height="100%">

@@ -8,6 +8,7 @@ import {
 	ReferenceLine,
 } from "recharts";
 import { groupBy } from "lodash";
+import Image from "next/image";
 
 const rawData = [
 	{ percentile: 0, value: 1 },
@@ -51,10 +52,24 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 	}, []);
 
 	return (
-		<div className="w-full max-w-3xl">
-			<div className="text-gray-600 mb-6">
-				You scored {`${percentile}`}% percentile which is lower than the average
-				percentile 72% of all the engineers who took this assessment
+		<div className="w-full">
+			<div className="flex items-center justify-between">
+				<div className="text-gray-600 mb-6">
+					<span className="font-semibold">
+						You scored {`${percentile}`}% percentile
+					</span>{" "}
+					which is lower than the average percentile 72% of all the engineers
+					who took this assessment
+				</div>
+				<div className="bg-slate-100 rounded-full p-6 self-start ">
+					<Image
+						src="/img/graph.jpg"
+						alt="graph"
+						width={30}
+						height={10}
+						className="max-xl:w-16"
+					/>
+				</div>
 			</div>
 			<div className="h-[300px] relative">
 				<ResponsiveContainer width="100%" height="100%">
@@ -72,7 +87,8 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 							stroke="#888"
 						/>
 						<Tooltip
-							formatter={(value, _, props) => [value, props.payload.percentile]}
+							// eslint-disable-next-line @typescript-eslint/no-unused-vars
+							formatter={(value, _, props) => [value, "Number of Students"]}
 						/>
 						<ReferenceLine
 							x={30}
@@ -91,7 +107,7 @@ const ComparisonGraph = ({ percentile }: { percentile: number }) => {
 							stroke="#7572b4"
 							strokeWidth={2}
 							dot={true}
-							activeDot={{ r: 4, fill: "none", stroke: "#7572b4" }}
+							activeDot={{ r: 6, fill: "#7572b4", stroke: "#7572b4" }}
 						/>
 					</LineChart>
 				</ResponsiveContainer>
