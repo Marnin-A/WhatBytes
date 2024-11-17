@@ -14,30 +14,48 @@ export default function QuickStatistics({
 }: Statistics) {
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-			<div className="flex items-center gap-4 p-4 border rounded-lg">
+			<div className="flex items-center gap-4 p-4 border rounded-lg max-xl:flex-col">
 				<div className="bg-slate-100 rounded-full p-4">
-					<Image src="/img/trophy.png" alt="trophy" width={20} height={20} />
+					<Image
+						src="/img/trophy.png"
+						alt="trophy"
+						width={20}
+						height={20}
+						className="max-md:w-9"
+					/>
 				</div>
-				<div>
+				<div className="max-xl:flex flex-col items-center gap-2">
 					<div className="text-2xl font-bold">{rank}</div>
 					<div className="text-sm text-muted-foreground">YOUR RANK</div>
 				</div>
 			</div>
-			<div className="flex items-center gap-4 p-4 border rounded-lg">
+			<div className="flex items-center gap-4 p-4 border rounded-lg max-xl:flex-col">
 				<div className="bg-slate-100 rounded-full p-4">
-					<Image src="/img/clipboard.png" alt="trophy" width={20} height={20} />
+					<Image
+						src="/img/clipboard.png"
+						alt="trophy"
+						width={20}
+						height={20}
+						className="max-md:w-9"
+					/>
 				</div>
-				<div>
+				<div className="max-xl:flex flex-col items-center gap-2">
 					<div className="text-2xl font-bold">{percentile}%</div>
 					<div className="text-sm text-muted-foreground">PERCENTILE</div>
 				</div>
 			</div>
-			<div className="flex items-center gap-4 p-4 border rounded-lg">
+			<div className="flex items-center gap-4 p-4 border rounded-lg max-xl:flex-col">
 				<div className="bg-slate-100 rounded-full p-4">
-					<Image src="/img/check.png" alt="trophy" width={30} height={30} />
+					<Image
+						src="/img/check.png"
+						alt="trophy"
+						width={30}
+						height={30}
+						className="max-md:w-9"
+					/>
 				</div>
-				<div>
-					<div className="text-2xl font-bold">{correctAnswers} / 15</div>
+				<div className="max-xl:flex flex-col items-center gap-1">
+					<div className="text-2xl font-bold">{correctAnswers}/15</div>
 					<div className="text-sm text-muted-foreground">CORRECT ANSWERS</div>
 				</div>
 			</div>
